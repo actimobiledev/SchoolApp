@@ -1,182 +1,187 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                >
-<!--
-    <RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <Spinner
+        android:id="@+id/spinnerSelectSchool"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rl1">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/spinner_bg"
+        android:padding="10dp"></Spinner>
 
--->
 
-        <ExpandableListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:visibility="visible">
+    <ExpandableListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:visibility="visible"
+        android:layout_below="@+id/spinnerSelectSchool">
 
-        </ExpandableListView>
-
+    </ExpandableListView>
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
         android:layout_below="@+id/list">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <android.support.v7.widget.CardView
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/card_view"
-                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:visibility="gone"
                 card_view:cardBackgroundColor="@color/colorTextWhite"
                 card_view:cardCornerRadius="5dp"
                 card_view:cardElevation="2sp"
                 card_view:cardUseCompatPadding="true"
-                card_view:contentPaddingTop="5dp"
-                android:visibility="gone">
+                card_view:contentPaddingTop="5dp">
+
                 <RelativeLayout
+                    android:id="@+id/rlAlert"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
-                    android:id="@+id/rlAlert">
+                    android:visibility="visible">
 
                     <TextView
+                        android:id="@+id/textView21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="10dp"
                         android:text="From:"
                         android:textColor="#000"
                         android:textSize="12sp"
-                        android:id="@+id/textView21"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginLeft="10dp"
 
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
 
                     <TextView
+                        android:id="@+id/tvMessageTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Title"
-                        android:paddingTop="10dp"
-                        android:id="@+id/tvMessageTitle"
-                        android:inputType="textMultiLine"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="15sp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/tvFrom"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Message"
+                        android:layout_below="@+id/tvFrom"
+                        android:inputType="textMultiLine"
+                        android:paddingBottom="10dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:paddingBottom="10dp"
-                        android:id="@+id/tvMessage"
+                        android:paddingTop="10dp"
+                        android:text="Title"
                         android:textColor="@color/colorTextBlack"
-                        android:layout_alignParentRight="true"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentLeft="true"
+                        android:layout_alignParentRight="true"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/tvMessageTitle"
-                        android:textSize="12sp"/>
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="Message"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="12sp" />
 
 
                     <TextView
+                        android:id="@+id/tvFrom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Driver"
-                        android:id="@+id/tvFrom"
-                        android:layout_marginLeft="10dp"
                         android:layout_alignParentTop="true"
-                        android:textSize="12sp"
-                        android:textColor="@color/colorTextBlack"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@+id/textView21"
                         android:layout_toLeftOf="@+id/tvAlermDate"
                         android:layout_toRightOf="@+id/textView21"
-                        android:layout_toEndOf="@+id/textView21"/>
+                        android:text="Driver"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tvAlermDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date:"
-                        android:id="@+id/tvAlermDate"
-                        android:textColor="#000"
-                        android:textSize="12sp"
                         android:layout_above="@+id/tvMessageTitle"
+                        android:layout_marginRight="10dp"
                         android:layout_toLeftOf="@+id/tvDate"
                         android:layout_toStartOf="@+id/tvDate"
-                        android:layout_marginRight="10dp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="25-01-2016"
-                        android:id="@+id/tvDate"
-                        android:textSize="12sp"
-                        android:layout_marginRight="10dp"
+                        android:text="Date:"
                         android:textColor="#000"
-                        android:layout_above="@+id/tvMessageTitle"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true"/>
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Recipient :"
+                        android:layout_above="@+id/tvMessageTitle"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:text="25-01-2016"
+                        android:textColor="#000"
+                        android:textSize="12sp" />
+
+                    <TextView
                         android:id="@+id/tvRecipientText"
-                        android:layout_below="@+id/tvMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignLeft="@+id/textView21"
                         android:layout_alignStart="@+id/textView21"
-                        android:textSize="12sp"
+                        android:layout_below="@+id/tvMessage"
+                        android:text="Recipient :"
                         android:textColor="@color/colorTextBlack"
-                        android:textStyle="bold"/>
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tvRecipient"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Teacher"
-                        android:id="@+id/tvRecipient"
-                        android:textColor="@color/colorTextBlack"
-                        android:textSize="12sp"
-                        android:layout_below="@+id/tvRecipientText"
                         android:layout_alignLeft="@+id/tvRecipientText"
                         android:layout_alignStart="@+id/tvRecipientText"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tvRecipientText"
                         android:layout_marginLeft="10dp"
-                        />
+                        android:layout_marginTop="10dp"
+                        android:text="Teacher"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="12sp" />
+
                     <TextView
+                        android:id="@+id/tvReply"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Reply"
-                        android:id="@+id/tvReply"
-                        android:gravity="center"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tvMessage"
                         android:drawableLeft="@drawable/ic_reply_enabled"
 
-                        android:textSize="15sp"
+                        android:gravity="center"
                         android:paddingRight="20dp"
-                        android:layout_below="@+id/tvMessage"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentEnd="true" />
+                        android:text="Reply"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -185,81 +190,80 @@
     </ScrollView>
 
 
+    <!--  <LinearLayout
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true"
+          android:weightSum="3.0"
+          android:background="@drawable/layout_background"
+          android:id="@+id/linearLayout">
 
-  <!--  <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:weightSum="3.0"
-        android:background="@drawable/layout_background"
-        android:id="@+id/linearLayout">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ivAddAlert"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_add_alert_disabled"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="New Alert"
-                android:textColor="@color/colorHint"
-                android:textSize="10sp"
-                android:layout_gravity="center"
-                android:id="@+id/tvAddAlert"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ivAddMessage"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_add_message_disabled"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_gravity="center"
-                android:textColor="@color/colorHint"
-                android:text="New Message"
-                android:textSize="10sp"
-                android:id="@+id/tvAddMessage"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ivAddNotice"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_add_notice_disabled"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:layout_gravity="center"
-                android:text="New Notice"
-                android:textColor="@color/colorHint"
-                android:textSize="10sp"
-                android:id="@+id/tvAddNotice"/>
-        </LinearLayout>
-    </LinearLayout>
-    -->
+          <LinearLayout
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1.0">
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ivAddAlert"
+                  android:layout_gravity="center"
+                  android:src="@drawable/ic_add_alert_disabled"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:text="New Alert"
+                  android:textColor="@color/colorHint"
+                  android:textSize="10sp"
+                  android:layout_gravity="center"
+                  android:id="@+id/tvAddAlert"/>
+          </LinearLayout>
+          <LinearLayout
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1.0">
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ivAddMessage"
+                  android:layout_gravity="center"
+                  android:src="@drawable/ic_add_message_disabled"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:layout_gravity="center"
+                  android:textColor="@color/colorHint"
+                  android:text="New Message"
+                  android:textSize="10sp"
+                  android:id="@+id/tvAddMessage"/>
+          </LinearLayout>
+          <LinearLayout
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1.0">
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ivAddNotice"
+                  android:layout_gravity="center"
+                  android:src="@drawable/ic_add_notice_disabled"/>
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textAppearance="?android:attr/textAppearanceSmall"
+                  android:layout_gravity="center"
+                  android:text="New Notice"
+                  android:textColor="@color/colorHint"
+                  android:textSize="10sp"
+                  android:id="@+id/tvAddNotice"/>
+          </LinearLayout>
+      </LinearLayout>
+      -->
 </RelativeLayout>

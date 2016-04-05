@@ -8,14 +8,20 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.rahul.schoolapp.R;
 import com.rahul.schoolapp.activity.AddMessageActivity;
 import com.rahul.schoolapp.adapter.AlertMessageNoticeAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeFragment extends Fragment {
@@ -36,6 +42,7 @@ public class HomeFragment extends Fragment {
     RelativeLayout rlAlert;
     public static int last_expanded_position = - 1;
     AlertMessageNoticeAdapter adapter;
+    Spinner spinner;
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,53 +62,12 @@ public class HomeFragment extends Fragment {
         cvMessage = (CardView) v.findViewById (R.id.card_view);
         rlAlert = (RelativeLayout) v.findViewById (R.id.rlAlert);
         tvReply=(TextView)v.findViewById(R.id.tvReply);
+        spinner=(Spinner)v.findViewById(R.id.spinnerSelectSchool);
     }
 
     private void initListener () {
 
-       /* ivAddAlert.setOnTouchListener (new View.OnTouchListener () {
-            @Override
-            public boolean onTouch (View v, MotionEvent event) {
-                if (event.getAction () == MotionEvent.ACTION_DOWN) {
-                    tvAddAlert.setTextColor (getResources ().getColor (color.colorPrimary));
-                    ivAddAlert.setImageResource(drawable.ic_add_alert_disabled);
-                } else if (event.getAction () == MotionEvent.ACTION_UP) {
-                    tvAddAlert.setTextColor (getResources ().getColor (color.colorHint));
-                    ivAddAlert.setImageResource (drawable.ic_add_alert_disabled);
-                  //  Intent intent = new Intent (getActivity (), AddAlertActivity.class);
-                   // startActivity (intent);
-                }
-                return true;
-            }
-        });
-        ivAddMessage.setOnTouchListener (new View.OnTouchListener () {
-            @Override
-            public boolean onTouch (View v, MotionEvent event) {
-                if (event.getAction () == MotionEvent.ACTION_DOWN) {
-                    tvAddMessage.setTextColor (getResources ().getColor (color.colorPrimary));
-                    ivAddMessage.setImageResource (drawable.ic_add_message_disabled);
-                } else if (event.getAction () == MotionEvent.ACTION_UP) {
-                    tvAddMessage.setTextColor (getResources ().getColor (color.colorHint));
-                    ivAddMessage.setImageResource (drawable.ic_add_message_disabled);
-                  //  Intent intent = new Intent (getActivity (), AddMessageActivity.class);
-                   // startActivity (intent);
-                }
-                return true;
-            }
-        });
-        ivAddNotice.setOnTouchListener (new View.OnTouchListener () {
-            @Override
-            public boolean onTouch (View v, MotionEvent event) {
-                if (event.getAction () == MotionEvent.ACTION_DOWN) {
-                    tvAddNotice.setTextColor (getResources ().getColor (color.colorPrimary));
-                    ivAddNotice.setImageResource (drawable.ic_add_notice_disabled);
-                } else if (event.getAction () == MotionEvent.ACTION_UP) {
-                    tvAddNotice.setTextColor (getResources ().getColor (color.colorHint));
-                    ivAddNotice.setImageResource (drawable.ic_add_notice_disabled);
-                }
-                return true;
-            }
-        });*/
+
         exListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
             @Override
             public void onGroupCollapse(int groupPosition) {
@@ -139,6 +105,24 @@ public class HomeFragment extends Fragment {
 
     private void initAdapter (LayoutInflater inflater, View v) {
         adapter = new AlertMessageNoticeAdapter(getActivity (), inflater, v);
-        exListView.setAdapter (adapter);
+        exListView.setAdapter(adapter);
+
+
+        List<String> list = new ArrayList<String>();
+        list.add("My School");
+        list.add("Sant Xiaveer");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                String subject = spinner.getSelectedItem().toString();
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 }
