@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar1"
+            style="@style/Widget.MyApp.ActionBar"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:gravity="center"
+            android:elevation="3dp"
+            android:theme="@style/Base.ThemeOverlay.AppCompat.Dark">
+        </android.support.v7.widget.Toolbar>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar1"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/fragment_container"
+            android:layout_alignParentStart="true">
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/navDrawerPanel"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="@color/colorNavDrawerLight">
+        <ListView
+            android:id="@+id/navDrawerList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/activatedBackgroundIndicator"
+            android:choiceMode="singleChoice"
+            android:divider="@color/colorDivider"
+            android:dividerHeight="1dp"
+            android:layout_below="@+id/textViewusermobile"/>
+
+        <!--        android:background="@color/colorNavDrawerLight"
+        -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:textColor="@color/colorTextWhite"
+            android:background="@color/colorNavDrawerLight"
+            android:textSize="18sp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:layout_marginTop="20dp"
+            android:paddingRight="20dp"
+            android:id="@+id/textViewusername"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text=""
+            android:textColor="@color/colorTextBlack"
+            android:textSize="16sp"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="5dp"
+            android:background="@color/colorNavDrawerLight"
+            android:id="@+id/textViewusermobile"
+            android:layout_below="@+id/textViewusername"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

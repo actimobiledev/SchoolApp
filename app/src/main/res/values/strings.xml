@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">SchoolApp</string>
+
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+
+
+    <string-array name="menulist1">
+        <item>Home</item>
+
+    </string-array>
+</resources>

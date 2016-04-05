@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5a7699</color>
+    <color name="colorPrimaryDark">#486487</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorBackground">#70adcf</color>
+    <color name="colorHint">#B3B3B3</color>
+    <color name="colorDivider">#4b4b4b</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorTextBlack">#000000</color>
+    <color name="colorTextWhite">#ffffff</color>
+    <color name="colorTextGrey">#8b8d8f</color>
+    <color name="colorTextHyperlink">#0080ff</color>
+    <color name="colorNavDrawerLight">#5a5b73</color>
+    <color name="colorNavDrawer">#54566e</color>
+    <color name="tab_text_color_unselected">#000000</color>
+    <color name="tab_text_color_selected">#ffffff</color>
+    <color name="tab_color_selected">#2b434f</color>
+    <color name="tab_color_unselected">#cbcacf</color>
+    <color name="table_header">#61788c</color>
+
+    <color name="pressed_color">#4d90fe</color>
+    <color name="default_color">#ffffff</color>
+
+    <color name="test_color1">#0059e9</color>
+    <color name="test_color2">#e10b0f</color>
+    <color name="test_color3">#45e70e</color>
+    <color name="test_color4">#a505e9</color>
+
+    <color name="calendar_color_appointments">#408AAF</color>
+    <color name="calendar_color_classes">#CC6600</color>
+    <color name="calendar_color_coursework">#008000</color>
+    <color name="calendar_color_notification">#800080</color>
+
+</resources>
