@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:padding="0dp"
         android:visibility="visible"
-        android:layout_below="@+id/spinnerSelectSchool">
+        android:layout_below="@+id/spinnerSelectSchool"
+        android:layout_marginTop="5dp">
 
     </ExpandableListView>
 
