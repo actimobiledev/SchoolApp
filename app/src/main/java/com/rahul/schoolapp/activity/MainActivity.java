@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
-        if (roll == 0) {
+
             actionBar.setTitle(getString(R.string.app_name));
             final ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.menulist1));
             mDrawerListView.setAdapter(new NavDrawerAdapter(this, getResources().getStringArray(R.array.menulist1)));
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-    }
+
 
     private void isLogin() {
         if (Constants.username == "" || Constants.password == "") {

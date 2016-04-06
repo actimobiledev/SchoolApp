@@ -50,7 +50,9 @@ public class NavDrawerAdapter extends BaseAdapter {
         } else {
             icon.setBackgroundColor(context.getResources().getColor(R.color.colorNavDrawer));
         }
-      /*  if (MainActivity.roll==0) {
+        TextView text = (TextView) vi.findViewById (R.id.textViewnavdraweritem);
+        text.setText (data[position]);
+      //  if (MainActivity.roll==0) {
             switch (position) {
                 case 0:
                     icon.setImageResource(R.drawable.ic_dashboard_image);
@@ -58,9 +60,9 @@ public class NavDrawerAdapter extends BaseAdapter {
                     break;
 
             }
-        }
+       // }
 
-        if (MainActivity.roll==1) {
+      /*  if (MainActivity.roll==1) {
 
             switch (position) {
 

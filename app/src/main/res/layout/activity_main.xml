@@ -49,46 +49,29 @@
             android:choiceMode="singleChoice"
             android:divider="@color/colorDivider"
             android:dividerHeight="1dp"
-            android:layout_below="@+id/textViewusermobile"/>
+            android:layout_below="@+id/ivSchoolLogo"
+            android:layout_marginTop="20dp"/>
 
         <!--        android:background="@color/colorNavDrawerLight"
         -->
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
+           android:layout_marginTop="20dp"
             android:textColor="@color/colorTextWhite"
-            android:background="@color/colorNavDrawerLight"
             android:textSize="18sp"
-            android:paddingLeft="20dp"
             android:paddingTop="5dp"
-            android:layout_marginTop="20dp"
             android:paddingRight="20dp"
-            android:id="@+id/textViewusername"
+            android:id="@+id/ivSchoolLogo"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text=""
-            android:textColor="@color/colorTextBlack"
-            android:textSize="16sp"
-            android:paddingLeft="20dp"
-            android:layout_marginBottom="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="5dp"
-            android:background="@color/colorNavDrawerLight"
-            android:id="@+id/textViewusermobile"
-            android:layout_below="@+id/textViewusername"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/school_logo"
+            android:background="@color/colorTextWhite"/>
+
     </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>
