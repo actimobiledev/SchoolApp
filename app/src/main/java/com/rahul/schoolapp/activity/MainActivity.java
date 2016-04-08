@@ -22,6 +22,8 @@ import android.widget.RelativeLayout;
 
 import com.rahul.schoolapp.R;
 import com.rahul.schoolapp.adapter.NavDrawerAdapter;
+import com.rahul.schoolapp.calendar.CalendarActivity;
+import com.rahul.schoolapp.calendar.CalendarActivityFragment;
 import com.rahul.schoolapp.fragment.HomeFragment;
 import com.rahul.schoolapp.utils.Constants;
 import com.rahul.schoolapp.utils.LoginDetailsPref;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         context = this;
         LoginDetailsPref loginDetailsPref = LoginDetailsPref.getInstance();
         roll = loginDetailsPref.getIntPref(MainActivity.this, LoginDetailsPref.ROLL);
@@ -181,6 +184,8 @@ public class MainActivity extends AppCompatActivity {
                             fragmentTransaction.commit();
                             break;
                         case 1:
+                            Intent intent=new Intent(MainActivity.this,CalendarActivity.class);
+                            startActivity(intent);
                             break;
                     }
                     mDrawerLayout.closeDrawer(mDrawerPanel);
