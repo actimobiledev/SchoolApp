@@ -6,16 +6,18 @@
             <item>
 
                 <shape>
-                    <gradient android:angle="90" android:endColor="#ffffff"
-                              android:startColor="#ffffff" android:type="linear"/>
-                    <corners android:radius="5dp"/>
-                    <padding android:bottom="3dp" android:left="3dp" android:right="3dp"
-                             android:top="3dp"/>
+                    <gradient android:angle="90" android:endColor="#ffffff" android:startColor="#ffffff" android:type="linear" />
+                    <corners android:radius="5dp" />
+                    <padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" />
+
+                    <stroke android:width="1dp" android:color="@color/action_bar_color_activity_1" />
 
                 </shape>
             </item>
-            <item> <bitmap android:gravity="bottom|right" android:src="@drawable/ic_arrow_down" /></item>
-         </layer-list>
+            <item>
+                <bitmap android:gravity="bottom|right" android:src="@drawable/ic_spinner_dropdown" />
+            </item>
+        </layer-list>
     </item>
 
 </selector>

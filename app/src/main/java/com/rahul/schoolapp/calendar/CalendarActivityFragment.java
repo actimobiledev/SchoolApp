@@ -1,17 +1,17 @@
 package com.rahul.schoolapp.calendar;
 
-import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +26,14 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class CalendarActivityFragment extends Fragment implements FlexibleCalendarView.OnMonthChangeListener,
-        FlexibleCalendarView.OnDateClickListener {
-
+public class CalendarActivityFragment extends Fragment implements FlexibleCalendarView.OnMonthChangeListener, FlexibleCalendarView.OnDateClickListener {
     private FlexibleCalendarView calendarView;
-    private TextView someTextView;
-    TextView  date;
+    TextView date;
+    TableLayout tl1;
+    ImageView nextMonthBtn;
+    ImageView prevMonthBtn;
+
+
     public CalendarActivityFragment() {
     }
 
@@ -43,8 +45,65 @@ public class CalendarActivityFragment extends Fragment implements FlexibleCalend
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        initView(view);
+        initListener();
+        setCheakBox();
+        CalendarView();
+        // initAdapter(inflater);
 
-        calendarView = (FlexibleCalendarView)view.findViewById(R.id.calendar_view);
+        return view;
+    }
+
+    private void initView(View view) {
+        tl1 = (TableLayout) view.findViewById(R.id.tl2);
+        nextMonthBtn = (ImageView) view.findViewById(R.id.move_to_next_month);
+        prevMonthBtn = (ImageView) view.findViewById(R.id.move_to_previous_month);
+        date = (TextView) view.findViewById(R.id.date);
+        calendarView = (FlexibleCalendarView) view.findViewById(R.id.calendar_view);
+    }
+
+
+    private void initListener() {
+        nextMonthBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendarView.moveToNextMonth();
+            }
+        });
+        prevMonthBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendarView.moveToPreviousMonth();
+            }
+        });
+    }
+
+
+    private void setCheakBox() {
+        int m = 5;
+        double n = Math.ceil((double) m / 2);
+        Log.d("n++++ = ", "" + n);
+        for (int i = 1; i <= n; i++) {
+            TableRow row = new TableRow(getActivity());
+            row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            for (int j = 0; j < m / n; j++) {
+
+                CheckBox cbCalendar = new CheckBox(getActivity());
+                cbCalendar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                cbCalendar.setPadding(5, 5, 5, 5);
+                int n1 = ((2 * i) - 1) + j;
+                cbCalendar.setText("Calendar " + n1);
+                cbCalendar.setId(n1);
+                row.addView(cbCalendar);
+
+            }
+            m--;
+            tl1.addView(row);
+        }
+    }
+
+
+    private void CalendarView() {
         calendarView.setCalendarView(new FlexibleCalendarView.CalendarView() {
             @Override
             public BaseCellView getCellView(int position, View convertView, ViewGroup parent, @BaseCellView.CellType int cellType) {
@@ -105,90 +164,33 @@ public class CalendarActivityFragment extends Fragment implements FlexibleCalend
                 return null;
             }
         });
-
-        ImageView nextMonthBtn = (ImageView)view.findViewById(R.id.move_to_next_month);
-        ImageView prevMonthBtn = (ImageView)view.findViewById(R.id.move_to_previous_month);
-        date=(TextView)view.findViewById(R.id.date);
-
-        nextMonthBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendarView.moveToNextMonth();
-            }
-        });
-        prevMonthBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendarView.moveToPreviousMonth();
-            }
-        });
-
-        setupToolBar(view);
-
-        return view;
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         updateTitle(calendarView.getSelectedDateItem().getYear(), calendarView.getSelectedDateItem().getMonth());
     }
 
-    public void setupToolBar(View mainView){
-        Toolbar toolbar = (Toolbar) mainView.findViewById(R.id.toolbar);
 
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-
-        ActionBar bar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-
-        bar.setDisplayHomeAsUpEnabled(true);
-        bar.setDisplayShowTitleEnabled(false);
-        bar.setDisplayShowCustomEnabled(true);
-
-        someTextView = new TextView(getActivity());
-        someTextView.setTextColor(getActivity().getResources().getColor(R.color.default_color));
-
-        someTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (calendarView.isShown()) {
-                    calendarView.collapse();
-                } else {
-                    calendarView.expand();
-                }
-            }
-        });
-        bar.setCustomView(someTextView);
-
-        bar.setBackgroundDrawable(new ColorDrawable(getActivity().getResources()
-                .getColor(R.color.action_bar_color_activity_1)));
-
-        //back button color
-        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-        upArrow.setColorFilter(getResources().getColor(R.color.default_color), PorterDuff.Mode.SRC_ATOP);
-        bar.setHomeAsUpIndicator(upArrow);
-    }
-
-    private void updateTitle(int year, int month){
+    private void updateTitle(int year, int month) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, 1);
         date.setText(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, this.getResources().getConfiguration().locale) + " " + year);
-       // someTextView.setText(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, this.getResources().getConfiguration().locale) + " " + year);
-        someTextView.setText("Calendar");
+
     }
 
     @Override
     public void onMonthChange(int year, int month, int direction) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, 1);
-        updateTitle(year,month);
+        //updateTitle(year, month);
     }
 
     @Override
     public void onDateClick(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
-        cal.set(year,month,day);
-        Toast.makeText(getActivity(),cal.getTime().toString()+ " Clicked",Toast.LENGTH_SHORT).show();
+        cal.set(year, month, day);
+        Toast.makeText(getActivity(), cal.getTime().toString() + " Clicked", Toast.LENGTH_SHORT).show();
     }
 }

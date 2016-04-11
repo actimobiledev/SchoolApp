@@ -21,7 +21,6 @@ public class AlertMessageNoticeAdapter implements ExpandableListAdapter {
     LayoutInflater layoutInflater;
     View view;
 
-
     TextView tvApprove;
     TextView tvDecline;
     CardView cvMessage;
@@ -34,7 +33,6 @@ public class AlertMessageNoticeAdapter implements ExpandableListAdapter {
     TextView tvReply;
 
 
-
     public AlertMessageNoticeAdapter(Activity activity, LayoutInflater layoutInflater, View v) {
         mActivity = activity;
         this.layoutInflater = layoutInflater;
@@ -44,7 +42,6 @@ public class AlertMessageNoticeAdapter implements ExpandableListAdapter {
 
 
     private void initView(View v){
-
         tvMessageTitle = (TextView) v.findViewById (R.id.tvMessageTitle);
         tvMessage = (TextView) v.findViewById (R.id.tvMessage);
         cvMessage = (CardView) v.findViewById (R.id.card_view);
@@ -110,24 +107,19 @@ public class AlertMessageNoticeAdapter implements ExpandableListAdapter {
                 RadioButton osButton = (RadioButton) finalV.findViewById (checkedId);
                 switch (groupPosition){
                     case 0:
-
                         tvRecipientName.setVisibility (View.VISIBLE);
                         tvRecipientText.setVisibility (View.VISIBLE);
                         tvRecipientText.setVisibility(View.VISIBLE);
                         tvReply.setVisibility(View.GONE);
-
                         //                 rlAlert.setVisibility (View.VISIBLE);
                         break;
                     case 1:
-
                         tvRecipientName.setVisibility (View.VISIBLE);
                         tvRecipientText.setVisibility (View.VISIBLE);
                         tvReply.setVisibility(View.VISIBLE);
-
                         //                  rlAlert.setVisibility (View.VISIBLE);
                         break;
                     case 2:
-
                         tvRecipientName.setVisibility (View.GONE);
                         tvRecipientText.setVisibility (View.GONE);
                         tvReply.setVisibility(View.GONE);
@@ -201,29 +193,23 @@ public class AlertMessageNoticeAdapter implements ExpandableListAdapter {
     public boolean hasStableIds () {
         return false;
     }
-
     @Override
     public boolean isChildSelectable (int groupPosition, int childPosition) {
         return true;
     }
-
     @Override
     public boolean isEmpty () {
         return false;
     }
-
     @Override
     public void onGroupCollapsed (int groupPosition) {
     }
-
     @Override
     public void onGroupExpanded (int groupPosition) {
     }
-
     @Override
     public void registerDataSetObserver (DataSetObserver observer) {
     }
-
     @Override
     public void unregisterDataSetObserver (DataSetObserver observer) {
     }
